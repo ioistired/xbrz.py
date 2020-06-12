@@ -76,12 +76,12 @@ def scale_pillow(img: 'PIL.Image.Image', factor) -> 'PIL.Image.Image':
 def main():
 	import sys
 
-	try:
-		scaled = scale(bytearray(sys.stdin.buffer.read()), *map(int, sys.argv[1:]), ColorFormat.RGBA)
-	except TypeError:
+	if len(sys.argv) != 4:
 		print('Usage:', sys.argv[0], '<scale factor> <width> <height>', file=sys.stderr)
-		print('Scales a raw image from stdin to stdout.', file=sys.stderr)
+		print('Scales a raw RGBA image from stdin to stdout.', file=sys.stderr)
 		sys.exit(1)
+
+	scaled = scale(bytearray(sys.stdin.buffer.read()), *map(int, sys.argv[1:]), ColorFormat.RGBA)
 
 	sys.stdout.buffer.write(scaled)
 
