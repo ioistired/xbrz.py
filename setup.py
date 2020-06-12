@@ -42,7 +42,7 @@ setup(
 
 	classifiers=[
 		'Topic :: Software Development',
-		'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)'
+		'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
 		'Development Status :: 5 - Production/Stable',
 		'Programming Language :: Python :: 3 :: Only',
 		'Programming Language :: Python :: 3.5',
