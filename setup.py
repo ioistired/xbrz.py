@@ -2,6 +2,8 @@
 
 import re
 from setuptools import setup, Extension
+from setuptools.extension import Library
+from setuptools.command.build_ext import build_ext
 
 with open('README.md') as f:
 	long_description = f.read()
@@ -14,6 +16,19 @@ with open('xbrz.py') as f:
 
 if not version:
 	raise RuntimeError('version is not set')
+
+copt = {
+	'msvc': ['/O2', '/opt:none', '/std:c++17'],
+	'unix': ['-O3', '-std=gnu++17', '-g0'],
+}
+
+class build_ext_subclass(build_ext):
+	def build_extensions(self):
+		c = self.compiler.compiler_type
+		if c in copt:
+			for e in self.extensions:
+				e.extra_compile_args = copt[c]
+		super().build_extensions()
 
 setup(
 	name='xbrz.py',
@@ -35,6 +50,7 @@ setup(
 			extra_compile_args=['-std=gnu++17', '-g0'],
 		),
 	],
+	cmdclass= {'build_ext': build_ext_subclass},
 	extras_require={
 		'wand': 'Wand>=0.6.1,<1.0.0',
 		'pillow': 'Pillow>=7.1.2,<8.0.0',

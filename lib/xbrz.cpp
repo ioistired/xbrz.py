@@ -13,6 +13,8 @@
 #include <cmath> //std::sqrt
 #include "xbrz_tools.h"
 
+#include "dummy_module.cpp"
+
 using namespace xbrz;
 
 
