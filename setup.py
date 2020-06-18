@@ -40,6 +40,7 @@ setup(
 	long_description_content_type='text/markdown',
 	license='AGPL-3.0-or-later',
 	url='https://github.com/iomintz/xbrz.py',
+	python_requires='>=3.6.0',
 
 	py_modules=['xbrz'],
 	ext_modules=[
@@ -61,7 +62,6 @@ setup(
 		'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
 		'Development Status :: 5 - Production/Stable',
 		'Programming Language :: Python :: 3 :: Only',
-		'Programming Language :: Python :: 3.5',
 		'Programming Language :: Python :: 3.6',
 		'Programming Language :: Python :: 3.7',
 		'Programming Language :: Python :: 3.8',
