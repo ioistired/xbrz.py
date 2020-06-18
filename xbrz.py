@@ -19,7 +19,7 @@ import importlib.util
 import ctypes
 from enum import IntEnum
 
-__version__ = '1.0.0.post3'
+__version__ = '1.0.0.post4'
 __all__ = ['ColorFormat', 'SCALE_FACTOR_RANGE', 'scale', 'scale_wand', 'scale_pillow']
 
 class ColorFormat(IntEnum):  # from high bits -> low bits, 8 bit per channel
