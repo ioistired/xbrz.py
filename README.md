@@ -6,7 +6,7 @@ xbrz.py is a simple ctypes-based binding library for [xBRZ], a high-quality pixe
 
 ## Installation
 
-Make sure you have a C++ compiler handy.
+Wheels are available for many platforms. If there isn't one for your platform, make sure you have a C++ compiler handy.
 
 ```
 pip install xbrz.py
