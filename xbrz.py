@@ -15,12 +15,13 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with xbrz.py. If not, see <https://www.gnu.org/licenses/>.
 
-import importlib.util
+__version__ = '1.0.0.post5'
+__all__ = ['ColorFormat', 'SCALE_FACTOR_RANGE', 'scale', 'scale_wand', 'scale_pillow']
+
 import ctypes
 from enum import IntEnum
 
-__version__ = '1.0.0.post5'
-__all__ = ['ColorFormat', 'SCALE_FACTOR_RANGE', 'scale', 'scale_wand', 'scale_pillow']
+from _xbrz import __file__ as xbrz_path
 
 class ColorFormat(IntEnum):  # from high bits -> low bits, 8 bit per channel
 	RGB = 1
@@ -29,7 +30,7 @@ class ColorFormat(IntEnum):  # from high bits -> low bits, 8 bit per channel
 
 SCALE_FACTOR_RANGE = range(2, 7)
 
-_xbrz = ctypes.CDLL(importlib.util.find_spec('_xbrz').loader.get_filename())
+_xbrz = ctypes.CDLL(xbrz_path)
 uint32_p = ctypes.POINTER(ctypes.c_uint32)
 _xbrz.xbrz_scale_defaults.argtypes = [ctypes.c_size_t, uint32_p, uint32_p, ctypes.c_int, ctypes.c_int, ctypes.c_int]
 _xbrz.xbrz_scale_defaults.restype = None
