@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with xbrz.py. If not, see <https://www.gnu.org/licenses/>.
 
-__version__ = '1.0.0.post5'
+__version__ = '1.0.1'
 __all__ = ['ColorFormat', 'SCALE_FACTOR_RANGE', 'scale', 'scale_wand', 'scale_pillow']
 
 import ctypes
