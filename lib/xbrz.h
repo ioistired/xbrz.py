@@ -14,6 +14,10 @@
 #include <limits>
 #include "xbrz_config.h"
 
+#define EXPORT
+#ifdef _WIN32
+	#define EXPORT __declspec(dllexport)
+#endif
 
 extern "C"
 {
@@ -59,7 +63,7 @@ void xbrz_scale(
     int yFirst, int yLast //slice of source image
 );
 
-void xbrz_scale_defaults(
+EXPORT void xbrz_scale_defaults(
     size_t factor, //valid range: 2 - SCALE_FACTOR_MAX
     const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
     ColorFormat colFmt
