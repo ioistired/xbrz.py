@@ -25,6 +25,7 @@
                 "before_install": [
                     "choco install python --version 3.8.0",
                     "export PATH=\"/c/Python38:/c/Python38/Scripts:$PATH\"",
+                    # make sure it's on the PATH as 'python3'
                     "ln -s /c/Python38/python.exe /c/Python38/python3.exe"
                 ]
             }
@@ -33,6 +34,7 @@
     "env": {
         "global": [
             "TWINE_USERNAME=__token__",
+            # TWINE_PASSWORD is set to a PyPI API token in Travis settings
             "CIBW_SKIP=\"cp27-* cp35-* pp27-* pp36-win32\""
         ]
     },
@@ -42,9 +44,11 @@
     "script": [
         "wget --no-check-certificate https://curl.haxx.se/ca/cacert.pem -O $HOME/cacert.pem",
         "export SSL_CERT_FILE=$HOME/cacert.pem",
+        # build the wheels, put them into './wheelhouse'
         "python3 -m cibuildwheel --output-dir wheelhouse"
     ],
     "after_success": [
+        # if the release was tagged, upload them to PyPI
         "if [[ $TRAVIS_TAG ]]; then\n  python3 -m pip install twine\n  python3 -m twine upload wheelhouse/*.whl\nfi\n"
     ]
 }
