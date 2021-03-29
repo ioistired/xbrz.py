@@ -49,8 +49,7 @@ AGPLv3, see LICENSE.md. The original xBRZ code is GPLv3 licensed.
   Some changes were made:
   - Added some `extern "C"` declarations to the functions I intended to call from python.
   - Removed some namespace use to avoid being mangled.
-  - Replaced a template that was fucking braindead even for a C++ developer
-    with a simple function that takes two arguments. Was that so hard?
+  - Replaced a C++ template with a simple function that takes two arguments.
   - Converted the library to use RGBA instead of ARGB.
 - xbrz.py is based on lib/ and is released under the AGPLv3 license, see LICENSE.md for details.
 
