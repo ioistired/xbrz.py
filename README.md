@@ -1,6 +1,6 @@
 # xbrz.py
 
-[![Build Status](https://travis-ci.org/iomintz/xbrz.py.svg?branch=master)](https://travis-ci.org/iomintz/xbrz.py)
+[![Build Status](https://travis-ci.com/ioistired/xbrz.py.svg?branch=master)](https://travis-ci.org/iomintz/xbrz.py)
 
 xbrz.py is a simple ctypes-based binding library for [xBRZ], a high-quality pixel-art image scaling algorithm.
 
