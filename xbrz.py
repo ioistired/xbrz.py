@@ -55,11 +55,15 @@ def scale_wand(img: 'wand.image.Image', factor) -> 'wand.image.Image':
 	import wand.image
 	scaled_pixels = scale(bytearray(img.export_pixels(channel_map='RGBA')), factor, *img.size, ColorFormat.RGBA)
 	scaled = wand.image.Image(width=factor * img.width, height=factor * img.height)
-	scaled.import_pixels(channel_map='RGBA', data=memoryview(scaled_pixels))
+	scaled.import_pixels(
+		channel_map='RGBA',
+		# cast to bytes because apparently import_pixels ignores storage='long'
+		data=memoryview(scaled_pixels).cast('B'),
+	)
 	return scaled
 
 def scale_pillow(img: 'PIL.Image.Image', factor) -> 'PIL.Image.Image':
-	"""Scale a Wand image according to factor. The image must be RGBA or RGB. Return a new image."""
+	"""Scale a PIL/Pillow image according to factor. The image must be RGBA or RGB. Return a new image."""
 	import PIL.Image
 
 	if img.mode == 'RGB':
